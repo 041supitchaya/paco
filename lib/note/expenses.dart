@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               _buildButton('ค่าใช้จ่าย', 120, 35),
-              _buildButton('รายได้/โอนเงิน 1', 120, 35),
+              _buildButton('รายได้/โอนเงิน ', 120, 35),
             ],
           ),
         ),
