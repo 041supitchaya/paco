@@ -14,14 +14,14 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.transparent, // กำหนดสีพื้นหลังของแอปบาร์เป็นสีโปร่งใส
           elevation: 0, // กำหนดค่า elevation เป็น 0 เพื่อลบเงาของแอปบาร์
-          // title: Text(
-          //   'รายละเอียด',
-          //   style: TextStyle(
-          //     color: Colors.white, // กำหนดสีของข้อความเป็นสีขาว
-          //     fontSize: 32, // กำหนดขนาดตัวอักษรเป็น 32
-          //   ),
-          // ),
-          // centerTitle: true, // จัดวางข้อความตรงกลาง
+          title: Text(
+            'รายละเอียด',
+            style: TextStyle(
+              color: Colors.white, // กำหนดสีของข้อความเป็นสีขาว
+              fontSize: 32, // กำหนดขนาดตัวอักษรเป็น 32
+            ),
+          ),
+          centerTitle: true, // จัดวางข้อความตรงกลาง
         ),
         body: Stack(
           children: [
