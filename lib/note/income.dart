@@ -64,7 +64,7 @@ class _DatePickerPageState extends State<DatePickerPage> {
                             crossAxisCount: 4,
                             childAspectRatio: 1,
                           ),
-                          itemCount: 12,
+                          itemCount: 5, //กำหนดจำนวนกล่อง icon
                           itemBuilder: (BuildContext context, int index) {
                             return _buildSquareWithImageAndText(index);
                           },
@@ -293,33 +293,21 @@ class _DatePickerPageState extends State<DatePickerPage> {
   // Building template for square with image and text
   Widget _buildSquareWithImageAndText(int index) {
     List<String> imagePaths = [
-      'image/oil.png',
-      'image/food.png',
-      'image/shopping.png',
-      'image/home.png',
-      'image/fashion.png',
-      'image/giftbox.png',
-      'image/cheers.png',
-      'image/actress.png',
-      'image/guarantee.png',
-      'image/luggage.png',
-      'image/dog.png',
-      'image/mortarboard.png',
+      'image/salary.png',
+      'image/bonus.png',
+      'image/funds.png',
+      'image/transaction.png',
+      'image/money.png',
+      'image/piggy-bank.png',
     ];
 
     List<String> texts = [
-      'น้ำมัน',
-      'อาหาร',
-      'ช็อปปิ้ง',
-      'ที่อยู่อาศัย',
-      'เสื้อผ้า',
-      'ของขวัญ',
-      'สังสรรค์',
-      'เสริมสวย',
-      'ประกัน',
-      'ท่องเที่ยว',
-      'สัตว์เลี้ยง',
-      'การศึกษา',
+      'เงินเดือน',
+      'โบนัส',
+      'ลงทุน',
+      'คืนเงิน',
+      'เงินเข้า',
+      'ออมเงิน',
     ];
 
     return Container(
