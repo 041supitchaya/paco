@@ -114,9 +114,28 @@ class _DatePickerPageState extends State<DatePickerPage> {
                         ),
 
                         // เพิ่มปุ่มเลือกวันที่
+                        // text "เลือกวันที่"
+                        Positioned(
+                          top: 62,
+                          right: 60,
+                          child: Container(
+                            width: 100, // Adjust the width as needed
+                            child: Text(
+                              'เลือกวันที่',
+                              textAlign: TextAlign.end, // Align the text to the right
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+
+                        // ปุ่มเลือกวันที่
                         Positioned(
                           top: 84,
-                          right: 44,
+                          right: 32,
                           child: ElevatedButton(
                             onPressed: () => _selectDate(context),
                             style: ElevatedButton.styleFrom(
@@ -127,14 +146,16 @@ class _DatePickerPageState extends State<DatePickerPage> {
                               backgroundColor: MaterialStateProperty.all(Color(0xFFF18585)), // สีพื้นหลังของปุ่ม
                             ),
                             child: Text(
-                              'เลือกวันที่',
+                              '${selectedDate.day}/${selectedDate.month}/${selectedDate.year}',
                               style: TextStyle(
-                                color: Color.fromARGB(255, 237, 237, 237), // สีของตัวอักษร
-                                fontWeight: FontWeight.bold, // ทำให้ตัวอักษรหนา
+                                color: Color.fromARGB(255, 237, 237, 237),
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
                           ),
                         ),
+
 
                         // เพิ่มคำว่า "note"
                         Positioned(
