@@ -30,14 +30,42 @@ class MyApp extends StatelessWidget {
             Align(
               alignment: Alignment.bottomCenter,
               child: Container(
-                height: 680, // ความสูงของสี่เหลี่ยม
-                width: 412, // ความกว้างของสี่เหลี่ยม
+                height: 680, // Height of the yellow rectangle
+                width: 412, // Width of the yellow rectangle
                 decoration: BoxDecoration(
-                  color: Color(0xFFFCDA78), // สี FCDA78
+                  color: Color(0xFFFCDA78), // Yellow color
                   borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(30), // มุมบนซ้าย
-                    topRight: Radius.circular(30), // มุมบนขวา
+                    topLeft: Radius.circular(30), // Top-left corner radius
+                    topRight: Radius.circular(30), // Top-right corner radius
                   ),
+                ),
+              ),
+            ),
+
+            // First rectangle (263x228)
+            Positioned(
+              top: 132,
+              left: (412 - 263) / 2, // Centered horizontally
+              child: Container(
+                height: 228, // Height of the first rectangle
+                width: 263, // Width of the first rectangle
+                decoration: BoxDecoration(
+                  color: Colors.white, // Color of the first rectangle
+                  borderRadius: BorderRadius.circular(30), // Corner radius of the first rectangle
+                ),
+              ),
+            ),
+
+            // Second rectangle (331x200)
+            Positioned(
+              top: 400,
+              left: (412 - 331) / 2, // Centered horizontally
+              child: Container(
+                height: 200, // Height of the second rectangle
+                width: 331, // Width of the second rectangle
+                decoration: BoxDecoration(
+                  color: Colors.white, // Color of the second rectangle
+                  borderRadius: BorderRadius.circular(30), // Corner radius of the second rectangle
                 ),
               ),
             ),

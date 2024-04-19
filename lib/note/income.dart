@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-// import 'package:intl/intl.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
 
 void main() {
   runApp(MyApp());
@@ -21,6 +22,13 @@ class DatePickerPage extends StatefulWidget {
 
 class _DatePickerPageState extends State<DatePickerPage> {
   DateTime selectedDate = DateTime.now();
+  late File _profileImage; // Declare _profileImage variable
+
+  @override
+  void initState() {
+    super.initState();
+    _profileImage = File(''); // Initialize _profileImage with an empty file
+  }
 
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
@@ -33,6 +41,20 @@ class _DatePickerPageState extends State<DatePickerPage> {
       setState(() {
         selectedDate = picked;
       });
+  }
+  
+  // รูปภาพของกล้อง
+  Future<void> _pickImage(ImageSource source) async {
+    final picker = ImagePicker();
+    final pickedFile = await picker.getImage(source: source);
+
+    if (pickedFile != null) {
+      setState(() {
+        _profileImage = File(pickedFile.path); //ใช้รูปภาพที่ถูกเลือก
+      });
+    } else {
+      // ปรับปรุงตรงนี้เพื่อจัดการข้อผิดพลาดหรือกรณีที่ผู้ใช้ยกเลิกการเลือกภาพ
+    }
   }
 
   @override
@@ -64,7 +86,7 @@ class _DatePickerPageState extends State<DatePickerPage> {
                             crossAxisCount: 4,
                             childAspectRatio: 1,
                           ),
-                          itemCount: 5, //กำหนดจำนวนกล่อง icon
+                          itemCount: 6, //กำหนดจำนวนกล่อง icon
                           itemBuilder: (BuildContext context, int index) {
                             return _buildSquareWithImageAndText(index);
                           },
@@ -89,29 +111,53 @@ class _DatePickerPageState extends State<DatePickerPage> {
                     ),
                     child: Stack(
                       children: [
+                        // วงกลมใส่รูป
                         Positioned(
                           top: 8,
-                          left: MediaQuery.of(context).size.width / 2 - 60, // คำนวณตำแหน่ง X เพื่อจัดวงกลมกลางกลาง
-                          child: Container(
-                            width: 110,
-                            height: 110,
-                            decoration: BoxDecoration(
-                              color: Color(0xFFD9D9D9), // สีของวงกลม
-                              shape: BoxShape.circle,
+                          left: MediaQuery.of(context).size.width / 2 - 60,
+                          child: GestureDetector(
+                            onTap: () {
+                              _pickImage(ImageSource.camera); // Open camera to take a photo
+                            },                    
+                            child: Container(
+                              width: 110,
+                              height: 110,
+                              decoration: BoxDecoration(
+                                color: Color(0xFFD9D9D9),
+                                shape: BoxShape.circle,
+                              ),
+                              child: _profileImage != null
+                                ? CircleAvatar(
+                                  radius: 50,
+                                  backgroundImage: FileImage(_profileImage),
+                                )
+                                : Center(
+                                  child: Icon(
+                                    Icons.camera_alt,
+                                    size: 48,
+                                    color: Colors.black,
+                                  ),
+                                ),
                             ),
                           ),
                         ),
 
-                        // icon รูปกล้อง
+                        // รูปกล้อง
                         Positioned(
-                          top: 88, // ปรับตำแหน่งให้ไกลจากด้านบนของวงกลม
-                          right: MediaQuery.of(context).size.width / 2 - 44, // ปรับตำแหน่ง X ของรูปภาพ
-                          child: Image.asset(
-                            'image/camera.png', // รูปภาพของกล้อง
-                            width: 16,
-                            height: 16,
+                          top: 88,
+                          right: MediaQuery.of(context).size.width / 2 - 44,
+                          child: GestureDetector(
+                            onTap: () {
+                              _pickImage(ImageSource.gallery); // Open gallery to select an image
+                            },
+                            child: Image.asset(
+                              'image/camera.png',
+                              width: 28,
+                              height: 28,
+                            ),
                           ),
                         ),
+
 
                         // เพิ่มปุ่มเลือกวันที่
                         // text "เลือกวันที่"
@@ -311,7 +357,7 @@ class _DatePickerPageState extends State<DatePickerPage> {
     );
   }
 
-  // Building template for square with image and text
+    // Building template for square with image and text
   Widget _buildSquareWithImageAndText(int index) {
     List<String> imagePaths = [
       'image/salary.png',
