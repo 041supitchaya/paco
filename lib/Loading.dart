@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.orange,
       ),
-      home: MyHomePage(key: GlobalKey(), title: 'Paco Money'),
+      home: MyHomePage(key: GlobalKey(), title: 'Paco Moneys'),
     );
   }
 }
