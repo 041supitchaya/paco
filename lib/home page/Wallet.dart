@@ -94,10 +94,10 @@ class WalletPage extends StatelessWidget {
           // Add functionality to add a new transaction
         },
         child: Image.asset(
-                        'image/pen.png', // เปลี่ยนเป็นพาทของรูป pen ของคุณ
-                        width: 36,
-                        height: 36,
-                      ),
+            'image/pen.png', // เปลี่ยนเป็นพาทของรูป pen ของคุณ
+            width: 36,
+            height: 36,
+          ),
         // child: Icon(Icons.add),
         backgroundColor: Color(0xFFFCDA78),
       ),
