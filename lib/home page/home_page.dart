@@ -10,15 +10,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Color(0xFFF5A359), // กำหนดพื้นหลังของทั้งหน้าจอเป็นสี F5A359
+        backgroundColor: Color(0xFFF5A359),
         appBar: AppBar(
-          backgroundColor: Colors.transparent, // กำหนดสีพื้นหลังของแอปบาร์เป็นสีโปร่งใส
-          elevation: 0, // กำหนดค่า elevation เป็น 0 เพื่อลบเงาของแอปบาร์
+          backgroundColor: Colors.transparent,
+          elevation: 0,
           title: Text(
             'หนังสือเริ่มต้น',
             style: TextStyle(
-              color: Colors.white, // กำหนดสีของข้อความเป็นสีขาว
-              fontSize: 20, // กำหนดขนาดตัวอักษรเป็น 32
+              color: Colors.white,
+              fontSize: 20,
             ),
           ),
         ),
@@ -26,58 +26,151 @@ class MyApp extends StatelessWidget {
           children: [
             // รูป 'book.png' และข้อความ "หนังสือเริ่มต้น"
             Padding(
-              padding: const EdgeInsets.fromLTRB(15, 10, 0, 0), // ปรับระยะห่างจากขอบด้านบนและด้านซ้าย
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              padding: const EdgeInsets.fromLTRB(15, 10, 0, 0),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Image.asset(
                     'image/book.png',
-                    width: 40, // ปรับขนาดของรูป
-                    height: 40, // ปรับขนาดของรูป
+                    width: 40,
+                    height: 40,
                   ),
-                  SizedBox(height: 5), // เพิ่มระยะห่างระหว่างรูปภาพและข้อความ
+                  SizedBox(width: 5),
                   Text(
                     'หนังสือเริ่มต้น',
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 16, // ปรับขนาดของข้อความ
+                      fontSize: 16,
                     ),
                   ),
                 ],
               ),
             ),
 
-            // สี่เหลี่ยมสีเหลือง
-            // Container for the rectangle
-            Align(
-              alignment: Alignment.bottomCenter,
+            // สี่เหลี่ยมสีเหลืองใหญ่
+            Positioned(
+              bottom: 0,
+              left: 0,
+              right: 0,
+              height: MediaQuery.of(context).size.height - 160,
               child: Container(
-                height: 680, // ความสูงของสี่เหลี่ยม
-                width: 412, // ความกว้างของสี่เหลี่ยม
                 decoration: BoxDecoration(
-                  color: Color(0xFFFCDA78), // สี FCDA78
+                  color: Color(0xFFFCDA78),
                   borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(40), // มุมบนซ้าย
-                    topRight: Radius.circular(40), // มุมบนขวา
+                    topLeft: Radius.circular(40),
+                    topRight: Radius.circular(40),
+                  ),
+                ),
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 24),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(height: 16),
+                        Container(
+                          height: 160,
+                          decoration: BoxDecoration(
+                            color: Color(0xFFFCDA78),
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          child: Center(
+                            child: Text(
+                              '\฿17,500.00',
+                              style: TextStyle(
+                                color: Color(0xFFF5A359),
+                                fontSize: 30,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 24),
+                        Text(
+                          'Transactions',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(height: 10),
+                        ListView.builder(
+                          shrinkWrap: true,
+                          physics: NeverScrollableScrollPhysics(),
+                          itemCount: 1,
+                          itemBuilder: (context, index) {
+                            return ListTile(
+                              leading: Image.asset('image/oil.png'),
+                              title: Text('Oil'),
+                              subtitle: Text('2024-03-15'),
+                              trailing: Text('\฿1500.00'),
+                            );
+                          },
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
             ),
+
+            // สร้างสี่เหลี่ยม +add
+            Positioned(
+              bottom: 84,
+              right: 10,
+              child: Container(
+                height: 64, // ความสูงของสี่เหลี่ยม
+                width: 64, // ความกว้างของสี่เหลี่ยม
+                child: Stack(
+                  children: [
+                    // สี่เหลี่ยมสีเหลือง
+                    Positioned.fill(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Color.fromARGB(255, 251, 204, 61), // สี FCDA78
+                          borderRadius: BorderRadius.circular(20), // รัศมีความโค้งทุกด้าน 30
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.2), // เงาสีดำ 20%
+                              spreadRadius: 1,
+                              blurRadius: 5,
+                              offset: Offset(0, 3), // ตำแหน่งเงา
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    // รูป pen อยู่ตรงกลางของสี่เหลี่ยม
+                    Positioned(
+                      top: 17, // ระยะตำแหน่งจากด้านบน
+                      left: 17, // ระยะตำแหน่งจากด้านซ้าย
+                      child: Image.asset(
+                        'image/pen.png', // เปลี่ยนเป็นพาทของรูป pen ของคุณ
+                        width: 36,
+                        height: 36,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
 
             // toolbar ข้างล่าง
             Align(
               alignment: Alignment.bottomCenter,
               child: Container(
                 height: 66,
-                width: MediaQuery.of(context).size.width, // กำหนดความกว้างเต็มหน้าจอ
-                color: Color(0xFFFFF5C0), // เปลี่ยนสีเป็น FFF5C0
+                width: MediaQuery.of(context).size.width,
+                color: Color(0xFFFFF5C0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    _buildToolbarButton('image/book.png', 'Home'), // ปุ่ม Home
-                    _buildToolbarButton('image/wallet.png', 'Wallet'), // ปุ่ม Wallet
-                    _buildToolbarButton('image/analytics.png', 'Analytics'), // ปุ่ม Analytics
-                    _buildToolbarButton('image/logout.png', 'Logout'), // ปุ่ม Logout
+                    _buildToolbarButton('image/book.png', 'Home'),
+                    _buildToolbarButton('image/wallet.png', 'Wallet'),
+                    _buildToolbarButton('image/analytics.png', 'Analytics'),
+                    _buildToolbarButton('image/logout.png', 'Logout'),
                   ],
                 ),
               ),
@@ -88,10 +181,9 @@ class MyApp extends StatelessWidget {
     );
   }
 
-  // Building template for toolbar button
   Widget _buildToolbarButton(String iconPath, String text) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24), // Add horizontal padding
+      padding: const EdgeInsets.symmetric(horizontal: 24),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -105,7 +197,6 @@ class MyApp extends StatelessWidget {
             text,
             style: TextStyle(
               fontSize: 12,
-              // fontWeight: FontWeight.bold,
             ),
           ),
         ],
@@ -113,4 +204,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-

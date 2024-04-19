@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
+import 'package:firebase_core/firebase_core.dart';
 
 void main() {
   runApp(MyApp());
@@ -42,7 +43,7 @@ class _DatePickerPageState extends State<DatePickerPage> {
         selectedDate = picked;
       });
   }
-  
+
   // รูปภาพของกล้อง
   Future<void> _pickImage(ImageSource source) async {
     final picker = ImagePicker();
@@ -61,7 +62,7 @@ class _DatePickerPageState extends State<DatePickerPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFFFCDA78), //  background color of the AppBar 
+        backgroundColor: Color(0xFFFCDA78), //  background color of the AppBar
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
@@ -377,64 +378,89 @@ class _DatePickerPageState extends State<DatePickerPage> {
       'ออมเงิน',
     ];
 
-    return Container(
-      margin: EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: Color(0xFFFCDA78),
-        borderRadius: BorderRadius.circular(24),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Image.asset(
-            imagePaths[index],
-            width: 44,
-            height: 44,
-          ),
-          SizedBox(height: 4),
-          Text(
-            texts[index],
-            style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.bold,
+    // เก็บข้อมูลใน icon
+    return GestureDetector(
+      onTap: () {
+        // Add functionality to store data based on the selected icon
+        // For example, you can display a dialog to confirm the selection
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text("Confirm Selection"),
+              content: Text("Do you want to store data related to ${texts[index]}?"),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.pop(context); // Close the dialog
+                  },
+                  child: Text("Cancel"),
+                ),
+                TextButton(
+                  onPressed: () {
+                    // Perform actions to store data related to the selected icon
+                    // For example, you can save data to a database or perform other operations
+                    // Here, I'm just printing a message for demonstration
+                    print("Data related to ${texts[index]} is saved!");
+                    Navigator.pop(context); // Close the dialog
+                  },
+                  child: Text("Confirm"),
+                ),
+              ],
+            );
+          },
+        );
+      },
+      child: Container(
+        margin: EdgeInsets.all(12),
+        decoration: BoxDecoration(
+          color: Color(0xFFFCDA78),
+          borderRadius: BorderRadius.circular(24),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              imagePaths[index],
+              width: 44,
+              height: 44,
             ),
-          ),
-        ],
+            SizedBox(height: 4),
+            Text(
+              texts[index],
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
 
-  //app bar
-  // Define the _buildButton method here
+  // ปุ่ม app bar
+  // Building template for buttons in the app bar
   Widget _buildButton(String text, double width, double height) {
-    return ElevatedButton(
-      onPressed: () {
-        // Add functionality for the button here
-      },
-      style: ElevatedButton.styleFrom(
-        minimumSize: Size(width, height),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20), // Set button border radius
+    return Container(
+      width: 150 ,
+      height: 32,
+      child: ElevatedButton(
+        onPressed: () {},
+        style: ElevatedButton.styleFrom(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20), // ทำให้มีมุมโค้ง
+          ),
+        ).copyWith(
+          backgroundColor: MaterialStateProperty.all(Color(0xFFF18585)), // สีพื้นหลังของปุ่ม
         ),
-        backgroundColor: Color(0xFFF18585), // Set the constant color
-      ).copyWith(
-        backgroundColor: MaterialStateProperty.resolveWith<Color>(
-          (Set<MaterialState> states) {
-            if (states.contains(MaterialState.pressed)) {
-              // When pressed
-              return Color.fromARGB(255, 240, 58, 58);
-            }
-            // Default color
-            return Color(0xFFF18585);
-          },
-        ),
-      ),
-      child: Text(
-        text,
-        style: TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.bold,
-          fontSize: 16,
+        child: Text(
+          text,
+          style: TextStyle(
+            color: Color.fromARGB(255, 237, 237, 237),
+            fontSize: 14,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
     );

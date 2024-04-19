@@ -39,9 +39,11 @@ dependencies:
   cupertino_icons: ^1.0.6
   flutter_datetime_picker: ^1.5.1
 
-dev_dependencies:
-  flutter_test:
-    sdk: flutter
+  firebase_core: ^2.30.0  # เพิ่ม firebase_core dependency
+  
+
+# เชื่อม fire base
+
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -87,6 +89,15 @@ flutter:
     - image/camera.png
     # login
     - image/duckling.png
+
+    # add
+    - image/pen.png
+
+    # wallet
+    - image/money_wallet.png
+    - image/piggy.png
+    - image/credit.png
+    - image/debit.png
   uses-material-design: true
 
 
