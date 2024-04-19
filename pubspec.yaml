@@ -85,6 +85,8 @@ flutter:
     - image/logout.png 
     # camera 
     - image/camera.png
+    # login
+    - image/duckling.png
   uses-material-design: true
 
 

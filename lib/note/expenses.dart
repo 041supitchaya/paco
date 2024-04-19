@@ -849,6 +849,7 @@ class _DatePickerPageState extends State<DatePickerPage> {
       'การศึกษา',
     ];
 
+    // เก็บข้อมูลใน icon
     return GestureDetector(
       onTap: () {
         // Add functionality to store data based on the selected icon
@@ -909,11 +910,12 @@ class _DatePickerPageState extends State<DatePickerPage> {
     );
   }
 
+  // ปุ่ม app bar
   // Building template for buttons in the app bar
   Widget _buildButton(String text, double width, double height) {
     return Container(
-      width: width,
-      height: height,
+      width: 150 ,
+      height: 32,
       child: ElevatedButton(
         onPressed: () {},
         style: ElevatedButton.styleFrom(

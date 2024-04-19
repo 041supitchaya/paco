@@ -1,0 +1,150 @@
+// import 'package:flutter/material.dart';
+// import 'package:pacomoney/model/profile.dart';
+
+// // import '../model/profile.dart';
+
+// class SingupScreen extends StatefulWidget {
+//   const SingupScreen({super.key});
+
+//   @override
+//   _SingupScreenState createState() => _SingupScreenState();
+// }
+
+// class _SingupScreenState extends State<SingupScreen> {
+
+//   final formKey = GlobalKey<FormState>();
+//   Profile profile = Profile(email: '', password: '');
+  
+//   // static String? get email => null;
+//   // static String? get password => null;
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//         appBar: AppBar(
+//           title: Text("Signup"),
+//         ),
+//         body: Container(
+//           child: Padding(
+//             padding: const EdgeInsets.fromLTRB(50, 100, 50, 100),
+//             child: Form(
+//               key: formKey,
+//               child: SingleChildScrollView(
+//                 child: Column(
+//                   children: [
+//                     Text("Your Email", style: TextStyle(fontSize: 20)),
+//                     TextFormField(
+//                       keyboardType: TextInputType.emailAddress,
+//                     ),
+//                     SizedBox(
+//                       height: 15,
+//                     ),
+//                     Text("Password", style: TextStyle(fontSize: 20)),
+//                     TextFormField(
+//                       obscureText: true,
+//                     ),
+//                     SizedBox(
+//                         width: double.infinity,
+//                         child: ElevatedButton(
+//                           child: Text("SINGUP", style: TextStyle(fontSize: 20)),
+//                           onPressed: () {},
+//                         ))
+//                   ],
+//                 ),
+//               ),
+//             ),
+//           ),
+//         ));
+//   }
+// }
+
+import 'package:flutter/material.dart';
+import 'package:paco_money/model/profile.dart';
+
+class SignupScreen extends StatefulWidget {
+  const SignupScreen({super.key});
+
+  @override
+  _SignupScreenState createState() => _SignupScreenState();
+}
+
+class _SignupScreenState extends State<SignupScreen> {
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final Profile profile = Profile(email: '', password: '');
+
+  String? email = '';
+  String? password = '';
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Signup"),
+      ),
+      backgroundColor: Color(0xFFF5A359), // เพิ่มพื้นหลังสี FFF18585
+      body: Container(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(50, 100, 50, 100),
+          child: Form(
+            key: formKey,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Text(
+                    "Email",
+                    style: const TextStyle(fontSize: 20),
+                  ),
+                  TextFormField(
+                    keyboardType: TextInputType.emailAddress,
+                    decoration: InputDecoration(
+                      hintText: 'Your email',
+                    ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter your email address';
+                      }
+                      return null; // Valid email
+                    },
+                    onSaved: (newValue) => email = newValue,
+                  ),
+                  SizedBox(height: 15),
+                  Text(
+                    "Password",
+                    style: const TextStyle(fontSize: 20),
+                  ),
+                  TextFormField(
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      hintText: 'Your password',
+                    ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter a password';
+                      }
+                      return null; // Valid password (consider adding complexity rules)
+                    },
+                    onSaved: (newValue) => password = newValue,
+                  ),
+                  SizedBox(height: 30), //เว้นระยะห่างปุ่ม sign up ลงมา 
+                  ElevatedButton(
+                    child: const Text("SIGN UP", style: TextStyle(fontSize: 20)),
+                    onPressed: () {
+                      if (formKey.currentState!.validate()) {
+                        formKey.currentState!.save();
+
+                        // Handle signup logic here
+                        //  - Call a backend API for user registration
+                        //  - Show a success/error message
+                        //  - Navigate to the next screen
+                      }
+                    },
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
