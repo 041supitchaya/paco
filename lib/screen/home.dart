@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:paco_money/screen/login.dart';
 // import 'package:pacomoney/screen/signup.dart';
 import 'package:paco_money/screen/signup.dart';
-import 'package:firebase_core/firebase_core.dart';
+// import 'package:firebase_core/firebase_core.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
-import 'package:firebase_core/firebase_core.dart';
+// import 'package:firebase_core/firebase_core.dart';
 
 void main() {
   runApp(MyApp());
@@ -358,7 +358,7 @@ class _DatePickerPageState extends State<DatePickerPage> {
     );
   }
 
-    // Building template for square with image and text
+  // Building template for square with image and text
   Widget _buildSquareWithImageAndText(int index) {
     List<String> imagePaths = [
       'image/salary.png',
