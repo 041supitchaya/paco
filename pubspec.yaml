@@ -101,6 +101,9 @@ flutter:
     - image/piggy.png
     - image/credit.png
     - image/debit.png
+
+    # history
+    - image/filling station.jpg
   uses-material-design: true
 
 

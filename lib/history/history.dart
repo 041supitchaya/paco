@@ -44,13 +44,13 @@ class MyApp extends StatelessWidget {
               ),
             ),
 
-            // First rectangle (263x228)
+            // รูปภาพ
             Positioned(
-              top: 132,
-              left: (412 - 263) / 2, // Centered horizontally
+              top: 124,
+              left: 212 / 2, // Centered horizontally
               child: Container(
-                height: 228, // Height of the first rectangle
-                width: 263, // Width of the first rectangle
+                height: 160, // Height of the first rectangle
+                width: 200, // Width of the first rectangle
                 decoration: BoxDecoration(
                   color: Colors.white, // Color of the first rectangle
                   borderRadius: BorderRadius.circular(30), // Corner radius of the first rectangle
@@ -58,9 +58,9 @@ class MyApp extends StatelessWidget {
               ),
             ),
 
-            // Second rectangle (331x200)
+            // ข้อความ
             Positioned(
-              top: 400,
+              top: 320,
               left: (412 - 331) / 2, // Centered horizontally
               child: Container(
                 height: 200, // Height of the second rectangle

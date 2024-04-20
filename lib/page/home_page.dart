@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
-}
+// void main() {
+//   runApp(MyApp());
+// }
 
-class MyApp extends StatelessWidget {
+class home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -74,6 +74,7 @@ class MyApp extends StatelessWidget {
                             color: Color(0xFFFCDA78),
                             borderRadius: BorderRadius.circular(16),
                           ),
+                          // Total money
                           child: Center(
                             child: Text(
                               '\฿17,500.00',

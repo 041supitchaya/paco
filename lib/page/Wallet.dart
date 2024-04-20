@@ -131,7 +131,7 @@ class WalletPage extends StatelessWidget {
           Text(
             text,
             style: TextStyle(
-              fontSize: 10,
+              fontSize: 12,
             ),
           ),
         ],
