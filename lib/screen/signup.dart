@@ -228,18 +228,19 @@ class _SignupScreenState extends State<SignupScreen> {
                     "Email",
                     style: const TextStyle(fontSize: 20),
                   ),
+                  // TextFormFieldใช้กรอกอีเมลและรหัสผ่าน 
                   TextFormField(
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
                       hintText: 'Your email',
                     ),
-                    validator: (value) {
+                    validator: (value) { //validator เพื่อตรวจสอบว่าข้อมูลถูกต้องหรือไม่
                       if (value == null || value.isEmpty) {
                         return 'Please enter your email address';
                       }
                       return null;
                     },
-                    onSaved: (newValue) => email = newValue!,
+                    onSaved: (newValue) => email = newValue!, //onSaved เพื่อบันทึกข้อมูลที่กรอกเมื่อมีการบันทึก
                   ),
                   SizedBox(height: 15),
                   Text(
@@ -271,7 +272,7 @@ class _SignupScreenState extends State<SignupScreen> {
                             email: email,
                             password: password,
                           );
-                          // เชื่อมหน้า Signup success 
+                          // เชื่อมหน้า Signup success เชื่อมไปหน้า home login (เชื่อมเเบบ Navigator)
                           Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(builder: (context) => HomeScreen()),

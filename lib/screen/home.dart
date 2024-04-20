@@ -25,7 +25,7 @@ class HomeScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton.icon(
-                  // เชื่อมหน้า ไปหน้า login ใช้ push
+                  // เชื่อมหน้า ไปหน้า login ใช้ push (เชื่อมเเบบ Navigator)
                   onPressed: (){
                     Navigator.push(context, MaterialPageRoute(
                       builder: (context){
@@ -40,7 +40,7 @@ class HomeScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
 
-                // เชื่อมหน้า ไปหน้า sing up ใช้ push
+                // เชื่อมหน้า ไปหน้า sing up ใช้ push (เชื่อมเเบบ Navigator)
                 child: ElevatedButton.icon(
                   onPressed: (){
                     Navigator.push(context, MaterialPageRoute(
