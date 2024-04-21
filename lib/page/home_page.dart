@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
-
+// import path หน้าที่ต้องการเชื่อม ของ tool bar
+import 'package:paco_money/page/wallet.dart';
+import 'package:paco_money/page/analytics.dart';
+import 'package:paco_money/screen/login.dart';
 // void main() {
 //   runApp(MyApp());
 // }
 
-class home extends StatelessWidget {
+class homepage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -168,10 +171,10 @@ class home extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    _buildToolbarButton('image/book.png', 'Home'),
-                    _buildToolbarButton('image/wallet.png', 'Wallet'),
-                    _buildToolbarButton('image/analytics.png', 'Analytics'),
-                    _buildToolbarButton('image/logout.png', 'Logout'),
+                    _buildToolbarButton(context, 'image/book.png', 'Home'),
+                    _buildToolbarButton(context,'image/wallet.png', 'Wallet'),
+                    _buildToolbarButton(context,'image/analytics.png', 'Analytics'),
+                    _buildToolbarButton(context,'image/logout.png', 'Logout'),
                   ],
                 ),
               ),
@@ -182,7 +185,7 @@ class home extends StatelessWidget {
     );
   }
 
-  Widget _buildToolbarButton(String iconPath, String text) {
+  Widget _buildToolbarButton(context, String iconPath, String text) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24),
       child: Column(

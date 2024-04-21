@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-// import path หน้าที่ต้องการเชื่อม
+// import path หน้าที่ต้องการเชื่อม ของ tool bar
 import 'package:paco_money/page/home_page.dart';
 import 'package:paco_money/page/wallet.dart';
 import 'package:paco_money/page/analytics.dart';
@@ -22,10 +22,10 @@ class _HomeState extends State<Home> {
       body: PageView(
         controller: _pageController,
         children: [
-          Home(), // เปลี่ยน Home() เป็น HomePage()
+          homepage(), 
           WalletPage(),
-          Analytics(), // เปลี่ยน Analytics() เป็น AnalyticsPage()
-          LoginScreen(), // เปลี่ยน LoginScreen() เป็น Login()
+          analytics(), 
+          LoginScreen(), 
         ],
       ),
       bottomNavigationBar: Align(

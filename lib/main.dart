@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:paco_money/screen/home.dart';
 // import 'package:firebase_core/firebase_core.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
+import 'package:paco_money/page/tool_bar.dart';
 
 
 // void main() {
@@ -27,7 +28,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Color.fromRGBO(248, 140, 63, 1)),
         useMaterial3: true,
       ),
-      home:HomeScreen()
+      home: Home()
+      // home: HomeScreen() // class HomeScreen เป็นหน้าเเรกในการ run
     );
   }
 }
